@@ -6,3 +6,7 @@ webpack
 经典webpack入门 http://www.tuicool.com/articles/ZjemEbJ
 
 入门Webpack，看这篇就够了 www.jianshu.com/p/42e11515c10f
+
+vue
+
+vue-cli + vue-router http://blog.csdn.net/ansu2009/article/details/53321044
