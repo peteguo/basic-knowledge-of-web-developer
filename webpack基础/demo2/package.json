@@ -4,7 +4,7 @@
   "description": "",
   "main": "dd",
   "scripts": {
-    "start": "webpack"
+    "start": "webpack-dev-server --inline"
   },
   "keywords": [
     "d"
