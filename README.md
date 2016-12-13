@@ -9,4 +9,4 @@ webpack
 
 vue
 
-vue-cli + vue-router http://blog.csdn.net/ansu2009/article/details/53321044
+vue-cli + vue-router搭建 http://blog.csdn.net/ansu2009/article/details/53321044
