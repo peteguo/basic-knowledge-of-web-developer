@@ -9,12 +9,16 @@ const state = {
     { id: 1, text: '...', done: true },
     { id: 2, text: '...', done: false }
   ]
-}
+},
 const mutations = {
   [SOME_MUTATION] (state,n) {
     state.count += n
   }
-}
+
+  // increment(state){
+  //   state.count++
+  // }
+},
 
 //从store的state中派生出一些状态
 const getters = {

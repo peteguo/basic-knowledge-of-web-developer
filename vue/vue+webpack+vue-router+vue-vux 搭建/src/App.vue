@@ -147,6 +147,7 @@ import Hello from './components/Hello'
 import { modal } from 'vue-strap'
 import { mapMutations } from 'vuex'
 import { mapGetters } from 'vuex'
+import {mapActions} from 'vuex'
 
 export default {
   name: 'app',
@@ -168,9 +169,13 @@ export default {
   methods: {
       ...mapMutations([
         'increment'
+      ]),
+      ...mapActions([
+        'increment'
       ])
   },
   mounted(){
+    //this.$store.commit('increment',1)
     $('.controls tr td').click(function() {
       let trSum = $('.controls tr');
       let tdSum = $('.controls tr td')
