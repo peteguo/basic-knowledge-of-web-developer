@@ -1,60 +1,3 @@
-<template>
-  <div style="height:100%;">
-      <!-- <router-link to="/toolBar">首页</router-link>
-      <router-link to="/list">列表页</router-link> -->
-      <toolbar></toolbar>
-      <notes-list></notes-list>
-      <editor></editor>
-      <!-- <router-view></router-view> -->
-    </div>
-</template>
-
-<script>
-
-import toolbar from 'src/page/ToolBar'
-import notesList from 'src/page/notesList'
-import editor from 'src/page/Editor'
-import { mapMutations } from 'vuex'
-import { mapGetters } from 'vuex'
-import {mapActions} from 'vuex'
-
-export default {
-  name: 'app',
-  components: {
-    toolbar,
-    notesList,
-    editor
-  },
-  data(){
-    return {
-
-    }
-  },
-  computed: {
-    ...mapGetters([
-      'doneTodos'
-    ]),
-  },
-  methods: {
-      ...mapMutations([
-        'increment'
-      ]),
-      ...mapActions([
-        'increment'
-      ])
-  },
-  mounted(){
-
-  },
-  created(){
-
-  },
-
-
-}
-</script>
-
-<style>
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,300);
 
 html, #app {
@@ -75,14 +18,14 @@ body {
   width: 80px;
   height: 100%;
   background-color: #20A0FF;
-  color: #fff;
+  color: #767676;
   padding: 35px 25px 25px 25px;
 }
 
 #notes-list {
   float: left;
   width: 300px;
-  height: 100%;
+  height: 50%;
   background-color: #F5F5F5;
   font-family: 'Raleway', sans-serif;
   font-weight: 400;
@@ -116,15 +59,16 @@ body {
 .list-group-item-heading {
   font-weight: 300;
   font-size: 15px;
+  width: 100px;
 }
 
 #note-editor {
-  height: 100%;
+  height: 50%;
   margin-left: 380px;
 }
 
 #note-editor textarea {
-  height: 100%;
+  height: 50%;
   border: 0;
   border-radius: 0;
 }
@@ -144,5 +88,3 @@ body {
 .starred {
   color: #F7AE4F;
 }
-
-</style>

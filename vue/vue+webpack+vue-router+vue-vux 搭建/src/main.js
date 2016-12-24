@@ -7,6 +7,7 @@ import App from './App'
 import VueRouter from 'vue-router'
 // 试用路由插件
 Vue.use(VueRouter)
+import store from './vuex/store'
 //import ElementUI from 'element-ui'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
@@ -19,7 +20,9 @@ const router = new VueRouter({
   base: __dirname,
   routes: routes })
 /* eslint-disable no-new */
+
 const app = new Vue({
       router: router,
+      store:store,
       render: h => h(App)
 }).$mount('#app')
