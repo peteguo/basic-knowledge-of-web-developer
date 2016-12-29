@@ -155,19 +155,6 @@ export default {
       dialogVisible: false
     }
   },
-  computed: {
-    ...mapGetters([
-      'doneTodos'
-    ]),
-  },
-  methods: {
-      ...mapMutations([
-        'increment'
-      ]),
-      ...mapActions([
-        'increment'
-      ])
-  },
   mounted(){
     //this.$store.commit('increment',1)
     $('.controls tr td').click(function() {
@@ -186,22 +173,18 @@ export default {
           arrDeleteTd.push(thisTr)
           //console.log(arrDeleteTd[0])
           $(this).hide();
-
         }
       })
-
-      // let tdAdd = "<td class='not-empty cols-2 rows-2' colspan='' rowspan='' data-index='0'>"
-      // +"<img src='https://img.yzcdn.cn/upload_files/2016/12/12/Fvm_v_pknTlbM6OPGSnu6M99eyFp.png!730x0.jpg'>"
-      // +"</td>"
-      let tdAdd ='<td class="not-empty cols-2 rows-2" colspan="" rowspan="" data-index="0"><img src="https://img.yzcdn.cn/upload_files/2016/12/12/Fvm_v_pknTlbM6OPGSnu6M99eyFp.png!730x0.jpg"></td>'
-
+      let tdAdd ='<td class="not-empty cols-2 rows-2" colspan="" rowspan="" data-index=""><img src="https://img.yzcdn.cn/upload_files/2016/12/12/Fvm_v_pknTlbM6OPGSnu6M99eyFp.png!730x0.jpg"></td>'
       arrDeleteTd[0].prepend(tdAdd)
       let addLength = $('.not-empty').length;
       let thisClass = $('.not-empty')[addLength-1]
-      console.log(thisClass)
+      console.log(thisClass);
+      let i = 0;
       $('.not-empty').eq(addLength-1).attr({
         'colspan':Number(x)+1,
-        'rowspan':Number(y)+1
+        'rowspan':Number(y)+1,
+        'data-index': i++
       })
         // $('.not-empty').each(function(index) {
         //   $(this).attr({
@@ -214,8 +197,7 @@ export default {
       // for (let i in trSum) {
       //   let tdSum = trSum[i];
       //   //console.log(JSON.stringify(tdSum))
-      //
-      //
+
       // }
     });
   },
@@ -227,7 +209,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
   #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;

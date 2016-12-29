@@ -5,6 +5,7 @@
       <toolbar></toolbar>
       <notes-list></notes-list>
       <editor></editor>
+      <magicSquare></magicSquare>
       <!-- <router-view></router-view> -->
     </div>
 </template>
@@ -14,6 +15,7 @@
 import toolbar from 'src/page/ToolBar'
 import notesList from 'src/page/notesList'
 import editor from 'src/page/Editor'
+import magicSquare from 'src/page/magicSquare'
 import { mapMutations } from 'vuex'
 import { mapGetters } from 'vuex'
 import {mapActions} from 'vuex'
@@ -23,7 +25,8 @@ export default {
   components: {
     toolbar,
     notesList,
-    editor
+    editor,
+    magicSquare
   },
   data(){
     return {
@@ -54,7 +57,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,300);
 
 html, #app {

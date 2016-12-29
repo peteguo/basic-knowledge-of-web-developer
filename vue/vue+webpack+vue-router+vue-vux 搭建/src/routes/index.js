@@ -36,5 +36,13 @@ const router = new VueRouter({
         auth: true
       }
     },
+    {
+      name:'magicSquare',
+      path:'/magicSquare',
+      component:require('pages/magicSquare'),
+      meta: {
+        auth: true
+      }
+    },
   ]
 })

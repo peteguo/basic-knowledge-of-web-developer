@@ -27,7 +27,6 @@ export default new Vuex.Store({
       }
       state.notes.push(newNote)
       state.activeNote = newNote
-      console.log(JSON.stringify(state.notes))
     },
 
     EDIT_NOTE (state, text) {
@@ -35,9 +34,10 @@ export default new Vuex.Store({
     },
 
     DELETE_NOTE (state) {
-      _.remove(state.notes,function(o){
-        state.notes == o.activeNote
+      var a = _.remove(state.notes,function(o){
+        o == state.activeNote
       })
+      // this.$delete(state.notes,state.activeNote)
       state.activeNote = state.notes[0]
     },
 
