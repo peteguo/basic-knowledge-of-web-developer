@@ -1,3 +1,5 @@
+require('./assets/css/reset.css');
+
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
@@ -24,5 +26,6 @@ const router = new VueRouter({
 const app = new Vue({
       router: router,
       store:store,
+      linkActiveClass: 'active',
       render: h => h(App)
 }).$mount('#app')
