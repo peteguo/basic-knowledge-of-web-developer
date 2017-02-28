@@ -19,7 +19,7 @@
       <ul class="itemBox">
         <li class="item" v-for="val in shopList">
           <a href="#">
-              <img :src="val.cover" alt="" :style="{width:val.imgwh + 'px',height:val.imgwh + 'px'}">
+              <img v-lazy="val.cover" :style="{width:val.imgwh + 'px',height:val.imgwh + 'px'}">
               <div class="info">
                 <p class="title nowrap-multi">{{val.title}}</p>
               </div>
@@ -28,7 +28,7 @@
       </ul>
     </section>
     <!-- 加载数据 -->
-    <!-- <loading :show="isShow"></loading> -->
+    <loading :show="isShow"></loading>
   </div>
 </template>
 <style lang="scss">
@@ -162,7 +162,7 @@
 <script>
 import headerTitle from '../common/header-title'
 import banner from 'src/components/banner'
-// import loading from 'src/components/loading'
+import loading from 'src/components/loading'
 import Mock from 'mockjs'
 import Http from 'src/page/lib/https'
 import { _shopJson} from 'src/vuex/api/mainAPI'
@@ -171,7 +171,7 @@ export default {
   components: {
       headerTitle,
       banner,
-
+      loading
   },
   data(){
     return {
@@ -179,6 +179,9 @@ export default {
       dataTab:[{title:'综合',keys:0},{title:'数量',keys:1},{title:'价格',keys:2},{title:'筛选',keys:3}],
       isActive:0,
       shopList:[],
+      isShow:false,
+      scroll:true,  //判断是否滚动
+      page:1,
     }
   },
   computed: {
@@ -215,17 +218,38 @@ export default {
           url: 'shoplist.json',
           dataType: 'json'
       }).done(function(data, status, jqXHR){
-
+        _this.scroll = true;
           _this.$nextTick(function () {
-            _this.shopList = data.data.rows
-          })
+            if(status == "success") {
+              if(_this.page == 1) {
+                _this.isShow = true;
+                _this.shopList = data.data.rows
+                _this.isShow = false;
+              }else {
+                _this.shopList = _this.shopList.concat(data.data.rows)
+              }
+            }
 
+
+          })
       })
       // _shopJson().then(({success, result, msg}) => {
       //   this.shopList = result
       //   console.log(result);
       // })
-    }
+    },
+    // 滚动加载
+    scrollData(){
+        if(this.scroll){
+          let allHeight = parseFloat($(window).height()) + parseFloat($(window).scrollTop());
+          if($(document).height() <= allHeight + 200) {
+            this.scroll = false;
+            this.page++;
+            if(this.page <= 5) this.getData();
+          }
+        }
+    },
+
   },
   mounted(){
 
@@ -245,8 +269,12 @@ export default {
     this.list = dataB.listBanner
     //console.log(JSON.stringify(this.list))
     this.getData()
-
     //console.log(JSON.stringify(shoplist.json))
+
+    /*滚动加载*/
+    $(window).on('scroll', () => {
+      this.scrollData();
+    });
   },
 }
 </script>

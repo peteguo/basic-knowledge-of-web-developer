@@ -29,7 +29,7 @@ export default {
 }
 </script>
 
-<style lang="sass">
+<style lang="scss">
 	.loading{
 		z-index: 10001;
 		overflow: hidden;

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="wrap">
-      <transition name="next">
+      <transition name="next" keep-alive>
         <router-view></router-view>
       </transition>
     </div>
@@ -23,6 +23,7 @@ export default {
   data(){
     return {
       isShow:false,
+      effect:'next'
     }
   },
 
